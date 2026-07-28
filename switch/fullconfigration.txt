@@ -1,0 +1,242 @@
+Current configuration : 7014 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname Switch
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$/jqa$RDr0blUQ.BReQYvhSwUeg/
+!
+username nada secret 5 $1$LEB/$bzgbY5NFW7eeey8ThEsNx1
+!
+no aaa new-model
+system mtu routing 1500
+!
+ip dhcp snooping vlan 10,20,30,100,136,999
+ip dhcp snooping
+ip domain-name ushield.com
+ip arp inspection vlan 10,20,30,100,136
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+interface FastEthernet0/1
+ description IT_DEVICES
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/2
+ description IT_DEVICES
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/3
+ description IT_DEVICES
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/4
+ description IT_USERS
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/5
+ description HR_DEVICES
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/6
+ description HR_DEVICES
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/7
+ description HR_DEVICES
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/8
+ description HR_DEVICES
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/9
+ description SERVERS
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/10
+ description SERVERS
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/11
+ description SERVERS
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/12
+ description SERVERS
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/13
+ description IOT_DEVICES
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/14
+ description IOT_DEVICES
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/15
+ description IOT_DEVICES
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/16
+ description IOT_DEVICES
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/17
+ description CLIENT_DEVICES
+ switchport access vlan 136
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/18
+ description CLIENT_DEVICES
+ switchport access vlan 136
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/19
+ description CLIENT_DEVICES
+ switchport access vlan 136
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip dhcp snooping limit rate 4
+!
+interface FastEthernet0/20
+ description UNUSED
+ switchport access vlan 666
+ switchport mode access
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/21
+ description UNUSED
+ switchport access vlan 666
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/22
+ description UNUSED
+ switchport access vlan 666
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/23
+ description UNUSED
+ switchport access vlan 666
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/24
+ description IDS_port
+ switchport access vlan 25
+ switchport mode access
+!
+interface GigabitEthernet0/1
+ description TRUNK_TO_OPENWRT
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20,30,100,136
+ switchport mode trunk
+ ip arp inspection trust
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan10
+ ip address 192.168.10.100 255.255.255.0
+!
+ip http server
+ip http secure-server
+banner motd ^C UNAUTHORIZED ACCESS IS DENIED ^C
+!
+line con 0
+ password 7 1527343F2C6B2E752C
+ login
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+monitor session 1 source interface Gi0/1
+monitor session 1 destination interface Fa0/24
+end
