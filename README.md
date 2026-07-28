@@ -190,10 +190,7 @@ uShield builds a unified security system from accessible components:
 | Arduino IDE | Latest | ESP32 firmware development |
 | Kali Linux | Latest | Attack simulation & penetration testing |
 
-
-```
-
-
+---
 ## Future Work
 
 - 🤖 **AI-Powered Autonomous Security** — AI classifies IDS alerts, auto-executes responses, eliminates need for a security engineer
