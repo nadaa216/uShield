@@ -190,48 +190,7 @@ uShield builds a unified security system from accessible components:
 | Arduino IDE | Latest | ESP32 firmware development |
 | Kali Linux | Latest | Attack simulation & penetration testing |
 
----
 
-## Repository Structure
-
-```
-uShield/
-├── README.md
-├── docs/
-│   ├── uShield_Book.pdf
-│   ├── uShield_Presentation.pdf
-│   └── uShield_Master_Structure.pdf
-├── switch/
-│   ├── startup_config.txt
-│   └── README.md
-├── firewall/
-│   ├── firewall_rules.txt
-│   ├── network_config.txt
-│   └── README.md
-├── ids/
-│   ├── suricata_config.yaml
-│   ├── sample_eve_alert.json
-│   └── README.md
-├── dashboard/
-│   ├── index.html
-│   ├── style.css
-│   ├── app.js
-│   ├── backend.py
-│   └── README.md
-├── iot/
-│   ├── door_lock/
-│   │   ├── esp32_doorlock.ino
-│   │   └── wiring_diagram.png
-│   ├── sensors/
-│   │   └── sensors.ino
-│   └── README.md
-├── diagrams/
-│   ├── network_topology.png
-│   ├── traffic_flow.png
-│   └── vlan_design.png
-└── testing/
-    ├── test_cases_table.pdf
-    └── results_summary.md
 ```
 
 
